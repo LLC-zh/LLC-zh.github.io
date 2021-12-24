@@ -1,0 +1,594 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="野风掠原">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Python基础学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础">
+<meta property="og:url" content="https://llc-zh.github.io/2021/12/24/Python%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="LLC BLOG">
+<meta property="og:description" content="Python基础学习">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://greenllrno.xyz/python_banner.jpg">
+<meta property="article:published_time" content="2021-12-24T01:27:14.000Z">
+<meta property="article:modified_time" content="2021-12-24T03:23:19.006Z">
+<meta property="article:author" content="野风掠原">
+<meta property="article:tag" content="Python学习">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://greenllrno.xyz/python_banner.jpg">
+  
+  
+  <title>Python基础 - LLC BLOG</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"llc-zh.github.io","root":"/","version":"1.8.13","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":"d0ab229475f84397490cd9eebebc934e","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="LLC BLOG" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>LLC BLOG</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Python基础">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-24 09:27" pubdate>
+        2021年12月24日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python基础</h1>
+            
+            <div class="markdown-body">
+              <h3 id="1-1-Python数学操作符"><a href="#1-1-Python数学操作符" class="headerlink" title="1.1  Python数学操作符"></a>1.1  Python数学操作符</h3><ul>
+<li>操作符：**    操作：指数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">2</span> ** <span class="hljs-number">9</span><br><span class="hljs-number">512</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>操作符：%    操作：取模/取余数</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span> % <span class="hljs-number">3</span><br><span class="hljs-number">1</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>操作符：//    操作：整除/商数取整(相当于除法只保留小数点前的结果)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span> // <span class="hljs-number">3</span><br><span class="hljs-number">2</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>操作符：/     操作：除法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span> / <span class="hljs-number">3</span><br><span class="hljs-number">2.3333333333333335</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>操作符：*    操作：乘法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span> * <span class="hljs-number">3</span><br><span class="hljs-number">21</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>操作符：+    操作：加法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span> + <span class="hljs-number">3</span><br><span class="hljs-number">10</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li>操作符：-    操作：减法</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-number">7</span> - <span class="hljs-number">3</span><br><span class="hljs-number">4</span><br></code></pre></div></td></tr></table></figure>
+
+<hr>
+<h3 id="1-2-整型、浮点型和字符串数据类型"><a href="#1-2-整型、浮点型和字符串数据类型" class="headerlink" title="1.2  整型、浮点型和字符串数据类型"></a>1.2  整型、浮点型和字符串数据类型</h3><table>
+<thead>
+<tr>
+<th align="center">数据类型</th>
+<th align="center">例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">整型</td>
+<td align="center">-2、-1、0、1、2、3、4、5</td>
+</tr>
+<tr>
+<td align="center">浮点型</td>
+<td align="center">-1.25、-1.0、-0.5、0.0、0.5、1.0、1.25</td>
+</tr>
+<tr>
+<td align="center">字符串</td>
+<td align="center">‘a’、’aa’、’aaa’、’Hello!’、’11 cats’</td>
+</tr>
+</tbody></table>
+<p><em>Python文本值，称为“字符串”或strs。总是用单引号包围住字符串(‘Hello’,也可以是中文，’你好’，一个中文在GBK编码下占两个字节，UTF-8下占3个字节)</em></p>
+<hr>
+<h3 id="1-3-字符串的连接和复制"><a href="#1-3-字符串的连接和复制" class="headerlink" title="1.3  字符串的连接和复制"></a>1.3  字符串的连接和复制</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&#x27;Alice&#x27;</span> + <span class="hljs-string">&#x27;Bob&#x27;</span><br><span class="hljs-string">&#x27;AliceBob&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&#x27;你好&#x27;</span> + <span class="hljs-string">&#x27;世界&#x27;</span><br><span class="hljs-string">&#x27;你好世界&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>该表达式求值为一个新字符串，包含了两个字符串的文本。在我理解看来，有点类似于Java中的append，但明显python更为简单方便。</p>
+<p>但是不能将字符串和一个整型值连接在一起，如果用+操作符连接在一起，python就不知道如何处理，他将显示一条错误的信息:</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&#x27;Alice&#x27;</span> + <span class="hljs-number">42</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;pyshell#12&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-string">&#x27;Alice&#x27;</span> + <span class="hljs-number">42</span><br>TypeError: can only concatenate <span class="hljs-built_in">str</span> (<span class="hljs-keyword">not</span> <span class="hljs-string">&quot;int&quot;</span>) to <span class="hljs-built_in">str</span><br></code></pre></div></td></tr></table></figure>
+
+<p>注意TypeError给出的信息，表示Python认为你试图将一个整数连接到字符串’Alice’。代码必须显式地将整数转换为字符串，因为Python不能自动完成转换。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#可以用str()显式的将42转换成&#x27;42&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&#x27;Alice&#x27;</span> + <span class="hljs-built_in">str</span>(<span class="hljs-number">42</span>)<br><span class="hljs-string">&#x27;Alice42&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>*操作符将两个整型或浮点型值相乘。但如果*操作符用于一个字符串值和一个整数值，它就变成了“字符串复制”操作符。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&#x27;Alice&#x27;</span> * <span class="hljs-number">5</span><br><span class="hljs-string">&#x27;AliceAliceAliceAliceAlice&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>该表达式求值为一个字符串，它将原来的字符串复制若干次，次数就是整型的值。</p>
+<p>*操作符只能用于两个数字（作为乘法），或一个字符串和一个整型值（作为“字符串复制”操作符。否则，Python将显示错误信息）</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-string">&#x27;Alice&#x27;</span> * <span class="hljs-string">&#x27;Bob&#x27;</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;pyshell#15&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-string">&#x27;Alice&#x27;</span> * <span class="hljs-string">&#x27;Bob&#x27;</span><br>TypeError: can<span class="hljs-string">&#x27;t multiply sequence by non-int of type &#x27;</span>st<span class="hljs-string">r&#x27;</span><br><span class="hljs-string">&gt;&gt;&gt; &#x27;</span>Alice<span class="hljs-string">&#x27; * 5.0</span><br><span class="hljs-string">Traceback (most recent call last):</span><br><span class="hljs-string">  File &quot;&lt;pyshell#16&gt;&quot;, line 1, in &lt;module&gt;</span><br><span class="hljs-string">    &#x27;</span>Alice<span class="hljs-string">&#x27; * 5.0</span><br><span class="hljs-string">TypeError: can&#x27;</span>t multiply sequence by non-<span class="hljs-built_in">int</span> of <span class="hljs-built_in">type</span> <span class="hljs-string">&#x27;float&#x27;</span><br></code></pre></div></td></tr></table></figure>
+
+<p>你不能把两个单词（句子）相乘，也很难将一个任意字符串复制小数次。</p>
+<hr>
+<h3 id="1-4-在变量中保存值"><a href="#1-4-在变量中保存值" class="headerlink" title="1.4  在变量中保存值"></a>1.4  在变量中保存值</h3><p>“变量”就像计算机内存中的一个盒子，其中可以存放一个值。</p>
+<h4 id="1-4-1-赋值语句"><a href="#1-4-1-赋值语句" class="headerlink" title="1.4.1  赋值语句"></a>1.4.1  赋值语句</h4><p>等号又被称为赋值操作符，将等号右边的值赋给左边</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span>spam = <span class="hljs-number">40</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>spam<br><span class="hljs-number">40</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>eggs = <span class="hljs-number">2</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>spam + eggs<br><span class="hljs-number">42</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>spam + eggs + spam<br><span class="hljs-number">82</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>spam = spam + <span class="hljs-number">2</span><br><span class="hljs-meta">&gt;&gt;&gt; </span>spam<br><span class="hljs-number">42</span><br></code></pre></div></td></tr></table></figure>
+
+<p>可以理解为在计算机内存中创建了一个名为’spam’的盒子（开辟内存空间），这个盒子存放在内存的某个地址，而这个盒子中又存放了一个值，这个值是40.</p>
+<p>最后一个spam = spam + 2，并不是直接在老值40加上2，而是将算术得到的42直接覆写到spam变量中去，相当于把40丢掉，把42塞进去。</p>
+<h4 id="1-4-2-变量名"><a href="#1-4-2-变量名" class="headerlink" title="1.4.2  变量名"></a>1.4.2  变量名</h4><table>
+<thead>
+<tr>
+<th align="center">有效的变量名</th>
+<th align="center">无效的变量名</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">current_balance</td>
+<td align="center">current-balance(不允许短横线)</td>
+</tr>
+<tr>
+<td align="center">currentBalance</td>
+<td align="center">current balance(不允许空格)</td>
+</tr>
+<tr>
+<td align="center">account4</td>
+<td align="center">4account(不允许数字开头)</td>
+</tr>
+<tr>
+<td align="center">_42</td>
+<td align="center">42(不允许数字开头)</td>
+</tr>
+<tr>
+<td align="center">TOTAL_SUM</td>
+<td align="center">TOTAL_$SUM(不允许$这样的特殊字符)</td>
+</tr>
+<tr>
+<td align="center">hello</td>
+<td align="center">‘hello’(不允许’这样的特殊字符)</td>
+</tr>
+</tbody></table>
+<ol>
+<li>只能是一个词，不带空格</li>
+<li>只能包含字母、数字和下划线字符</li>
+<li>不能以数字开头</li>
+</ol>
+<p>变量名是区分大小写的，这意味这spam,sPam,SPAM,Spam是不同的变量。规范的变量命名应采用驼峰命名或下划线分割命名。（lookLikeThis,look_like_this）</p>
+<hr>
+<h3 id="1-5-一个程序"><a href="#1-5-一个程序" class="headerlink" title="1.5  一个程序"></a>1.5  一个程序</h3><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#这是注释</span><br><span class="hljs-comment">#这是一个简单的程序，向世界说hello，叫出你的名字</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;Hello World!&#x27;</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你的名字是什么？&#x27;</span>)<br><br>myName = <span class="hljs-built_in">input</span>()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;很高兴遇到你，&#x27;</span> + myName)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你的名字一共长：&#x27;</span> + <span class="hljs-built_in">str</span>(<span class="hljs-built_in">len</span>(myName)))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;你的年龄是：&#x27;</span>)<br><br>myAge = <span class="hljs-built_in">input</span>()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;明年你就要&#x27;</span> + <span class="hljs-built_in">str</span>(<span class="hljs-built_in">int</span>(myAge)+<span class="hljs-number">1</span>) + <span class="hljs-string">&#x27;岁了&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+
+<p>程序执行结果</p>
+<table>
+<thead>
+<tr>
+<th>Hello World!<br/>你的名字是什么？<br/>李浴缸<br/>很高兴遇到你，李浴缸<br/>你的名字一共长：3<br/>你的年龄是：<br/>21<br/>明年你就要22岁了</th>
+</tr>
+</thead>
+</table>
+<h4 id="1-5-1-print-函数"><a href="#1-5-1-print-函数" class="headerlink" title="1.5.1  print()函数"></a>1.5.1  print()函数</h4><p>print()函数将括号内的字符串输出在屏幕上</p>
+<h4 id="1-5-2-input-函数"><a href="#1-5-2-input-函数" class="headerlink" title="1.5.2  input()函数"></a>1.5.2  input()函数</h4><p>input()函数等待用户在键盘上输入一些文本，并按回车键</p>
+<h4 id="1-5-3-len-函数"><a href="#1-5-3-len-函数" class="headerlink" title="1.5.3  len()函数"></a>1.5.3  len()函数</h4><p>求出括号内字符串中字符的个数</p>
+<hr>
+<h3 id="1-6-str-、int-、float-函数"><a href="#1-6-str-、int-、float-函数" class="headerlink" title="1.6  str()、int()、float()函数"></a>1.6  str()、int()、float()函数</h3><p> str()、int()、float()函数将分别求值为传入值的字符串、整数、浮点数的形式。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">str</span>(<span class="hljs-number">4.0</span>)<br><span class="hljs-string">&#x27;4.0&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">str</span>(-<span class="hljs-number">3.14</span>)<br><span class="hljs-string">&#x27;-3.14&#x27;</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">int</span>(<span class="hljs-string">&#x27;42&#x27;</span>)<br><span class="hljs-number">42</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">int</span>(<span class="hljs-number">1.25</span>)<br><span class="hljs-number">1</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">float</span>(<span class="hljs-string">&#x27;3.14&#x27;</span>)<br><span class="hljs-number">3.14</span><br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">float</span>(<span class="hljs-number">10</span>)<br><span class="hljs-number">10.0</span><br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Python%E5%AD%A6%E4%B9%A0/">Python学习</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/09/%E5%84%BF%E7%AB%A5%E9%BB%91%E8%AF%9D-Pig-Latin/">
+                        <span class="hidden-mobile">儿童黑话(Pig Latin)语言加密算法</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
