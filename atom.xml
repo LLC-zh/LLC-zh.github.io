@@ -6,7 +6,7 @@
   <link href="https://llc-zh.github.io/atom.xml" rel="self"/>
   
   <link href="https://llc-zh.github.io/"/>
-  <updated>2021-12-24T03:23:19.006Z</updated>
+  <updated>2022-01-27T09:36:48.617Z</updated>
   <id>https://llc-zh.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>三维张量轴变换(numpy的transpose方法)</title>
+    <link href="https://llc-zh.github.io/2022/01/27/%E4%B8%89%E7%BB%B4%E5%BC%A0%E9%87%8F%E8%BD%B4%E5%8F%98%E6%8D%A2-numpy%E7%9A%84transpose%E6%96%B9%E6%B3%95/"/>
+    <id>https://llc-zh.github.io/2022/01/27/%E4%B8%89%E7%BB%B4%E5%BC%A0%E9%87%8F%E8%BD%B4%E5%8F%98%E6%8D%A2-numpy%E7%9A%84transpose%E6%96%B9%E6%B3%95/</id>
+    <published>2022-01-27T08:51:07.000Z</published>
+    <updated>2022-01-27T09:36:48.617Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在预习数据挖掘算法，学习numpy时，接触到一个概念，叫三维张量，在查阅资料和自己思考后，我终于搞明白这个东西了。但是我觉得网上的关于三维张量的资料比较少，而且大多都是介绍三维张量是什么，关于三维张量的轴变换的过程基本上都是略过，所以我写下了这篇文章来介绍三维张量的轴变换，也是对我思考成果的一个巩固。</p><p>大学学过的线性代数中的矩阵一般都是二维的，比如这样一个三阶矩阵:<br>(1 2 3<br>4 5 6<br>7 8 9),<br>从几何学的角度来看，我认为它是一个二维平面空间，</p><p>那么如何表示多维矩阵(张量)?比如三维矩阵，我们看一下下面这张图:</p><p><img src="https://pic1.zhimg.com/80/v2-94f7732383f7b46a0c2ec5108e1fe088_720w.jpg" alt="三维张量"></p><p>从这张图中，可以看出这个正方体的每一个”横向切面“都是一个二维矩阵，这些”横向切面“堆叠在一起就构成了”三维矩阵“，也就是三维张量。</p><p>这个三维张量在numpy中用ndarray对象来表示就是：</p><p>[[[9 1 8]<br>[6 7 5]<br>[3 4 2]]</p><p>[[2 9 1]<br>[8 6 7]<br>[5 3 4]]</p><p>[[1 5 9]<br>[7 2 6]<br>[4 8 3]]]</p><p>那么重点来了，我们如何进行三维张量的轴变换？以上面这个[3, 3, 3]三维张量为例，定义0为x轴，1为y轴，2为z轴</p><p><img src="https://img-blog.csdnimg.cn/20200915120021432.png" alt="坐标系"></p><p>对0轴和1轴进行变换：</p><p>我们可以想象成是关于2轴方向对正方体进行”切片“，那么切下来的这些片分别是：</p><p>(9 1 8<br>2 9 1<br>1 5 9)</p><p>(6 7 5<br>8 6 7<br>7 2 6)</p><p>(3 4 2<br>5 3 4<br>4 8 3),</p><p>再把这些片按顺序自上往下堆叠起来，就完成了0轴和1轴的变换。其他情况下的轴变换以此类比。</p><p>参考资料：</p><p><a href="https://www.cnblogs.com/caizhou520/p/11227986.html">numpy中的transpose函数使用方法</a></p><p><a href="https://zhuanlan.zhihu.com/p/140260245">什么是张量</a></p><p><a href="https://www.cnblogs.com/kehao/p/14579860.html">tensorflow2.0张量的维度变换</a></p>]]></content>
+    
+    
+    <summary type="html">三维张量x,y,z轴变换</summary>
+    
+    
+    
+    <category term="学习" scheme="https://llc-zh.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+    <category term="三维张量" scheme="https://llc-zh.github.io/tags/%E4%B8%89%E7%BB%B4%E5%BC%A0%E9%87%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>Python基础</title>
