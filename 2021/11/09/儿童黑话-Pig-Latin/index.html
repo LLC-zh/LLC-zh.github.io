@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="LLC BLOG">
 <meta property="og:description" content="一个挺有意思的语言加密">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://greenllrno.xyz/pig_latin.jpg">
+<meta property="og:image" content="https://s2.loli.net/2022/01/31/zj6uewMInVyXA3i.jpg">
 <meta property="article:published_time" content="2021-11-09T07:28:44.000Z">
-<meta property="article:modified_time" content="2021-12-21T11:52:24.072Z">
+<meta property="article:modified_time" content="2022-01-31T10:07:29.142Z">
 <meta property="article:author" content="野风掠原">
 <meta property="article:tag" content="语言算法">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://greenllrno.xyz/pig_latin.jpg">
+<meta name="twitter:image" content="https://s2.loli.net/2022/01/31/zj6uewMInVyXA3i.jpg">
   
   
   <title>儿童黑话(Pig Latin)语言加密算法 - LLC BLOG</title>
@@ -212,7 +212,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.9k 字
+      3.8k 字
     </span>
   
 
@@ -221,7 +221,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      33 分钟
+      32 分钟
     </span>
   
 
@@ -289,7 +289,7 @@
 
 <h5 id="还有一个问题，在找到元音字母后如何进行字符串倒置，我的实现代码是这样的"><a href="#还有一个问题，在找到元音字母后如何进行字符串倒置，我的实现代码是这样的" class="headerlink" title="还有一个问题，在找到元音字母后如何进行字符串倒置，我的实现代码是这样的"></a>还有一个问题，在找到元音字母后如何进行字符串倒置，我的实现代码是这样的</h5><figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">//beforeWord:倒置前字符串,index:元音字母所在位置</span><br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title">reversalWord</span><span class="hljs-params">(String beforeWord,<span class="hljs-keyword">int</span> index)</span> </span>&#123;<br>		String frontWord = beforeWord.substring(<span class="hljs-number">0</span>,index);<br>		String breakWord = beforeWord.substring(index);<br>		<span class="hljs-keyword">return</span> breakWord.concat(frontWord);<br>	&#125;<br></code></pre></div></td></tr></table></figure>
 
-<h5 id="结果输出"><a href="#结果输出" class="headerlink" title="结果输出"></a>结果输出</h5><p><img src="https://greenllrno.xyz/Pig_Latin_word_result.jpg" srcset="/img/loading.gif" lazyload alt="结果"></p>
+<h5 id="结果输出"><a href="#结果输出" class="headerlink" title="结果输出"></a>结果输出</h5><p>One  -&gt;  Oneway</p>
 <h5 id="剩下的都是没什么了，有兴趣的话可以看看结尾的全部代码"><a href="#剩下的都是没什么了，有兴趣的话可以看看结尾的全部代码" class="headerlink" title="剩下的都是没什么了，有兴趣的话可以看看结尾的全部代码"></a>剩下的都是没什么了，有兴趣的话可以看看结尾的全部代码</h5><h4 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h4><ol>
 <li>还可以进一步优化思路，提高程序健壮程度，降低时间复杂度。</li>
 <li>只是实现了单个单词的Pig Latin加密，句子的Pig Latin加密没有实现，因为句子的情况更为复杂。</li>
@@ -299,7 +299,7 @@
 
 
 <p>参考资料:</p>
-<p>[]: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/rrttp/p/7922202.html">https://www.cnblogs.com/rrttp/p/7922202.html</a>    “char转化为String”<br>[]: <a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4d2b0bdb0100qluy.html">http://blog.sina.com.cn/s/blog_4d2b0bdb0100qluy.html</a>    “儿童黑话介绍”<br>[]: <a target="_blank" rel="noopener" href="https://www.cnblogs.com/mfrbuaa/p/3842271.html">https://www.cnblogs.com/mfrbuaa/p/3842271.html</a>    “相关代码参考”</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/rrttp/p/7922202.html">char转化为String</a><br><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4d2b0bdb0100qluy.html">儿童黑话介绍</a><br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mfrbuaa/p/3842271.html">相关代码参考</a></p>
 
             </div>
             <hr>
