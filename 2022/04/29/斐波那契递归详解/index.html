@@ -16,19 +16,41 @@
   <meta name="author" content="野风掠原">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://llc-zh.github.io/categories/index.html">
+    <meta name="description" content="以递归实现斐波那契数列为例，剖析递归本质">
+<meta property="og:type" content="article">
+<meta property="og:title" content="斐波那契递归详解">
+<meta property="og:url" content="https://llc-zh.github.io/2022/04/29/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%80%92%E5%BD%92%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="LLC BLOG">
+<meta property="og:description" content="以递归实现斐波那契数列为例，剖析递归本质">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/04/29/XoHvDAd6Yr1LPzb.png">
+<meta property="article:published_time" content="2022-04-29T11:49:57.000Z">
+<meta property="article:modified_time" content="2022-04-29T12:57:31.399Z">
 <meta property="article:author" content="野风掠原">
+<meta property="article:tag" content="递归算法">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/04/29/XoHvDAd6Yr1LPzb.png">
   
   
-  <title>分类 - LLC BLOG</title>
+  <title>斐波那契递归详解 - LLC BLOG</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/atom-one-dark.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -56,7 +78,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -169,9 +191,43 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="分类">
+            <span class="h2" id="subtitle" title="斐波那契递归详解">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-29 19:49" pubdate>
+        2022年4月29日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      763 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -184,157 +240,106 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">斐波那契递归详解</h1>
+            
+            <div class="markdown-body">
+              <h3 id="什么是斐波那契数列？"><a href="#什么是斐波那契数列？" class="headerlink" title="什么是斐波那契数列？"></a>什么是斐波那契数列？</h3><p>在数学上，斐波那契数列是这样定义的:</p>
+<p>F<sub>0</sub> = 0</p>
+<p>F<sub>1</sub> = 1</p>
+<p>F<sub>n</sub> = F<sub>n-1</sub> + F<sub>n-2</sub>(n&gt;=2)</p>
+<p>假设n=3,那么F<sub>3</sub>=F<sub>2</sub>+F<sub>1</sub>,此时F<sub>1</sub>是已知的，且值为1,F<sub>2</sub>未知。</p>
+<p>下一步我们继续套用公式算F2，F<sub>2</sub>=F<sub>1</sub>+F<sub>0</sub>，此时F<sub>1</sub>和F<sub>0</sub>都是已知的，且值都为0。就可以算出F<sub>2</sub>=1+0=1。</p>
+<p>有了F2，我们就可以算出F<sub>3</sub>=1+1=2。</p>
+<p>我们可以很轻易地推出n=1乃至n&gt;=2的任意一个数:</p>
+<p>1,1,2,3,5,8,13,21,34,55,89,…</p>
+<p>如果想更多了解斐波那契数列，可以参考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0">维基百科</a>（需科学上网），不推荐使用<del>百度百科</del>（懂得都懂）</p>
+<h3 id="斐波那契数列的二叉树表示形式"><a href="#斐波那契数列的二叉树表示形式" class="headerlink" title="斐波那契数列的二叉树表示形式"></a>斐波那契数列的二叉树表示形式</h3><p>话不多说，先放图:</p>
+<p><img src="https://s2.loli.net/2022/04/29/XoHvDAd6Yr1LPzb.png" srcset="/img/loading.gif" lazyload alt="n=3规模斐波那契数列"></p>
+<p>这是n=3时斐波那契数列的二叉树表示形式，观察一下可以看出<strong>叶子节点全部都是已知的值</strong>（可以理解为递归出口，意思就是“递归迷宫”走到这里就能出去了）。这个递归树怎么理解？实际上有点像动态规划，F<sub>3</sub>是原问题的规模，把它分解为F<sub>2</sub>和F<sub>1</sub>两个规模更小的子问题，再把F<sub>2</sub>分解为F<sub>1</sub>和F<sub>0</sub>。F<sub>1</sub>可以分解吗？公式的条件给出了答案，n&gt;=2时才可以分解，n=1和n=0时，已经是最小规模的了。</p>
+<p>我们再来分析一下这个东西的结点数，我们来算一下这个树的结点有多少，2<sup>2</sup>+1，那么当规模趋向于n时，结点数就是2<sup>n</sup>指数级别。</p>
+<h3 id="剖析递归程序在计算机中的运行过程"><a href="#剖析递归程序在计算机中的运行过程" class="headerlink" title="剖析递归程序在计算机中的运行过程"></a>剖析递归程序在计算机中的运行过程</h3><p>我们先来看一下斐波那契数列递归实现的java代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fibonacci</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>		<span class="hljs-keyword">if</span>(n == <span class="hljs-number">0</span>)<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span>)<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">return</span> fibonacci(n-<span class="hljs-number">1</span>)+fibonacci(n-<span class="hljs-number">2</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
+<p>其实这个过程用上面的二叉树表示图可以很清晰的解释，程序在算这个树的时候在中序遍历这个树，返回值的时候从叶节点开始返回，一直到整棵树的根节点。</p>
 
-
-
-<div class="category-list">
-  
-  
-  
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-4ef520d6cd20ba4a727af08e17e4939e" role="tab" data-toggle="collapse" href="#collapse-4ef520d6cd20ba4a727af08e17e4939e"
-        aria-expanded="false"
-      >
-        学习
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>4</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-4ef520d6cd20ba4a727af08e17e4939e" role="tabpanel" aria-labelledby="heading-4ef520d6cd20ba4a727af08e17e4939e">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2022/04/29/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%80%92%E5%BD%92%E8%AF%A6%E8%A7%A3/" class="list-group-item list-group-item-action">
-          <span class="category-post">斐波那契递归详解</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/01/27/%E4%B8%89%E7%BB%B4%E5%BC%A0%E9%87%8F%E8%BD%B4%E5%8F%98%E6%8D%A2-numpy%E7%9A%84transpose%E6%96%B9%E6%B3%95/" class="list-group-item list-group-item-action">
-          <span class="category-post">三维张量轴变换(numpy的transpose方法)</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/12/24/Python%E5%9F%BA%E7%A1%80/" class="list-group-item list-group-item-action">
-          <span class="category-post">Python基础</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2021/11/09/%E5%84%BF%E7%AB%A5%E9%BB%91%E8%AF%9D-Pig-Latin/" class="list-group-item list-group-item-action">
-          <span class="category-post">儿童黑话(Pig Latin)语言加密算法</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-aefcbfca08c840aeb8bd72dc1c8ff7f9" role="tab" data-toggle="collapse" href="#collapse-aefcbfca08c840aeb8bd72dc1c8ff7f9"
-        aria-expanded="false"
-      >
-        生活
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E7%94%9F%E6%B4%BB/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-aefcbfca08c840aeb8bd72dc1c8ff7f9" role="tabpanel" aria-labelledby="heading-aefcbfca08c840aeb8bd72dc1c8ff7f9">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2021/11/07/%E6%96%B0%E7%9A%84%E5%BC%80%E5%A7%8B/" class="list-group-item list-group-item-action">
-          <span class="category-post">新的开始</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-    
-    
-    <div class="category row">
-      <a
-        class="category-item collapsed list-group-item category-item-action col-10 col-md-11"
-        id="heading-0fea7c47d93da5689f31820ee525b367" role="tab" data-toggle="collapse" href="#collapse-0fea7c47d93da5689f31820ee525b367"
-        aria-expanded="false"
-      >
-        数据结构
-        <i class="iconfont icon-arrowright"></i>
-      </a>
-      <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="category-count col-2 col-md-1">
-        <i class="iconfont icon-articles"></i>
-        <span>1</span>
-      </a>
-      <div class="category-collapse collapse" id="collapse-0fea7c47d93da5689f31820ee525b367" role="tabpanel" aria-labelledby="heading-0fea7c47d93da5689f31820ee525b367">
-        
-        
-          
-  <div class="category-post-list">
-    
-    
-      
-      
-        <a href="/2022/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0-%E9%98%9F%E5%88%97/" class="list-group-item list-group-item-action">
-          <span class="category-post">数据结构复习(队列)</span>
-        </a>
-      
-    
-  </div>
-
-        
-      </div>
-    </div>
-  
-</div>
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/">递归算法</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0-%E9%98%9F%E5%88%97/">
+                        <span class="hidden-mobile">数据结构复习(队列)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -441,6 +446,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 
