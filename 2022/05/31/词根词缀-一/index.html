@@ -16,24 +16,22 @@
   <meta name="author" content="野风掠原">
   <meta name="keywords" content="">
   
-    <meta name="description" content="以递归实现斐波那契数列为例，剖析递归本质">
+    <meta name="description" content="初识词根词缀">
 <meta property="og:type" content="article">
-<meta property="og:title" content="斐波那契递归详解">
-<meta property="og:url" content="https://llc-zh.github.io/2022/04/29/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%80%92%E5%BD%92%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:title" content="词根词缀(一)">
+<meta property="og:url" content="https://llc-zh.github.io/2022/05/31/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80-%E4%B8%80/index.html">
 <meta property="og:site_name" content="LLC BLOG">
-<meta property="og:description" content="以递归实现斐波那契数列为例，剖析递归本质">
+<meta property="og:description" content="初识词根词缀">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/04/29/XoHvDAd6Yr1LPzb.png">
-<meta property="article:published_time" content="2022-04-29T11:49:57.000Z">
-<meta property="article:modified_time" content="2022-04-29T12:57:31.399Z">
+<meta property="article:published_time" content="2022-05-31T02:46:27.000Z">
+<meta property="article:modified_time" content="2022-05-31T03:58:51.787Z">
 <meta property="article:author" content="野风掠原">
-<meta property="article:tag" content="递归算法">
+<meta property="article:tag" content="英语">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/04/29/XoHvDAd6Yr1LPzb.png">
   
   
   
-  <title>斐波那契递归详解 - LLC BLOG</title>
+  <title>词根词缀(一) - LLC BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -209,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">斐波那契递归详解</span>
+            <span id="subtitle">词根词缀(一)</span>
           
         </div>
 
@@ -220,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-29 19:49" pubdate>
-          2022年4月29日 晚上
+        <time datetime="2022-05-31 10:46" pubdate>
+          2022年5月31日 上午
         </time>
       </span>
     
@@ -232,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          848 字
+          941 字
         
       </span>
     
@@ -281,28 +279,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">斐波那契递归详解</h1>
+            <h1 style="display: none">词根词缀(一)</h1>
             
             <div class="markdown-body">
               
-              <h3 id="什么是斐波那契数列？"><a href="#什么是斐波那契数列？" class="headerlink" title="什么是斐波那契数列？"></a>什么是斐波那契数列？</h3><p>在数学上，斐波那契数列是这样定义的:</p>
-<p>F<sub>0</sub> &#x3D; 0</p>
-<p>F<sub>1</sub> &#x3D; 1</p>
-<p>F<sub>n</sub> &#x3D; F<sub>n-1</sub> + F<sub>n-2</sub>(n&gt;&#x3D;2)</p>
-<p>假设n&#x3D;3,那么F<sub>3</sub>&#x3D;F<sub>2</sub>+F<sub>1</sub>,此时F<sub>1</sub>是已知的，且值为1,F<sub>2</sub>未知。</p>
-<p>下一步我们继续套用公式算F2，F<sub>2</sub>&#x3D;F<sub>1</sub>+F<sub>0</sub>，此时F<sub>1</sub>和F<sub>0</sub>都是已知的，且值都为0。就可以算出F<sub>2</sub>&#x3D;1+0&#x3D;1。</p>
-<p>有了F2，我们就可以算出F<sub>3</sub>&#x3D;1+1&#x3D;2。</p>
-<p>我们可以很轻易地推出n&#x3D;1乃至n&gt;&#x3D;2的任意一个数:</p>
-<p>1,1,2,3,5,8,13,21,34,55,89,…</p>
-<p>如果想更多了解斐波那契数列，可以参考<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0">维基百科</a>（需科学上网），不推荐使用<del>百度百科</del>（懂得都懂）</p>
-<h3 id="斐波那契数列的二叉树表示形式"><a href="#斐波那契数列的二叉树表示形式" class="headerlink" title="斐波那契数列的二叉树表示形式"></a>斐波那契数列的二叉树表示形式</h3><p>话不多说，先放图:</p>
-<p><img src="https://s2.loli.net/2022/04/29/XoHvDAd6Yr1LPzb.png" srcset="/img/loading.gif" lazyload alt="n=3规模斐波那契数列"></p>
-<p>这是n&#x3D;3时斐波那契数列的二叉树表示形式，观察一下可以看出<strong>叶子节点全部都是已知的值</strong>（可以理解为递归出口，意思就是“递归迷宫”走到这里就能出去了）。这个递归树怎么理解？实际上有点像动态规划，F<sub>3</sub>是原问题的规模，把它分解为F<sub>2</sub>和F<sub>1</sub>两个规模更小的子问题，再把F<sub>2</sub>分解为F<sub>1</sub>和F<sub>0</sub>。F<sub>1</sub>可以分解吗？公式的条件给出了答案，n&gt;&#x3D;2时才可以分解，n&#x3D;1和n&#x3D;0时，已经是最小规模的了。</p>
-<p>我们再来分析一下这个东西的结点数，我们来算一下这个树的结点有多少，2<sup>2</sup>+1，那么当规模趋向于n时，结点数就是2<sup>n</sup>指数级别。</p>
-<h3 id="剖析递归程序在计算机中的运行过程"><a href="#剖析递归程序在计算机中的运行过程" class="headerlink" title="剖析递归程序在计算机中的运行过程"></a>剖析递归程序在计算机中的运行过程</h3><p>我们先来看一下斐波那契数列递归实现的java代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">fibonacci</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>		<span class="hljs-keyword">if</span>(n == <span class="hljs-number">0</span>)<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>		<span class="hljs-keyword">if</span>(n == <span class="hljs-number">1</span>)<br>			<span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>		<span class="hljs-keyword">return</span> fibonacci(n-<span class="hljs-number">1</span>)+fibonacci(n-<span class="hljs-number">2</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>其实这个过程用上面的二叉树表示图可以很清晰的解释，程序在算这个树的时候在中序遍历这个树，返回值的时候从叶节点开始返回，一直到整棵树的根节点。</p>
+              <h1 id="ag-x3D-do-act"><a href="#ag-x3D-do-act" class="headerlink" title="ag&#x3D;do,act"></a>ag&#x3D;do,act</h1><p>Ag<strong>ent</strong>(表人)  代理人<br>Agent<strong>ial</strong>(形容词)  代理人的<br>Ag<strong>ency</strong>(表性质)  机构<br>Agen<strong>da</strong>  议事日程</p>
+<h1 id="Agri-x3D-field-土地"><a href="#Agri-x3D-field-土地" class="headerlink" title="Agri&#x3D;field(土地)"></a>Agri&#x3D;field(土地)</h1><p><strong>agri</strong>culture  农业<br>agricultur<strong>al</strong>  农业的<br><strong>Agr</strong>onomy  农学的<br>Agronom<strong>ist</strong>  农学家<br>Agrarian 土地的</p>
+<h1 id="Ann-x3D-year"><a href="#Ann-x3D-year" class="headerlink" title="Ann&#x3D;year"></a>Ann&#x3D;year</h1><p>Annual  年度的<br>Anni<strong>vers</strong>(转)ary  周年纪念日(一年转一次)<br><strong>Per</strong>(全部，自始自终)ennial  全年的<br><strong>Semi</strong>(一半)annual  半年一次的</p>
+<h1 id="Audi-x3D-hear"><a href="#Audi-x3D-hear" class="headerlink" title="Audi&#x3D;hear"></a>Audi&#x3D;hear</h1><p>Audio  听觉的<br>Audi<strong>ence</strong>(表名词)  听众<br>Aud<strong>ible</strong>(能…的) 听得见的<br>Audit  旁听;审计(旁听公司流程)<br>Auditor  审计员<br>Audition  听觉<br>Audi-visual  试听法</p>
+<h1 id="Bell-x3D-war-bell响铃，吹响战争号角"><a href="#Bell-x3D-war-bell响铃，吹响战争号角" class="headerlink" title="Bell&#x3D;war(bell响铃，吹响战争号角)"></a>Bell&#x3D;war(bell响铃，吹响战争号角)</h1><p><strong>Re</strong>(回，向后)bel  反叛(回过来打自己人)<br>Rebell<strong>ion</strong>  叛乱<br>Belliger<strong>ent</strong>(关于…的)  好战的</p>
+<h1 id="Brev-x3D-short"><a href="#Brev-x3D-short" class="headerlink" title="Brev&#x3D;short"></a>Brev&#x3D;short</h1><p>Breif  简短的<br>Breviary  缩短，摘要<br>Brevity  简洁<br><strong>Ab</strong>(加强)breviate  缩短<br>Abbreviation  缩写</p>
+<h1 id="cept-x3D-take-拿"><a href="#cept-x3D-take-拿" class="headerlink" title="cept&#x3D;take(拿)"></a>cept&#x3D;take(拿)</h1><p><strong>Ex</strong>(出)cept  除…之外(拿出去)<br>Exceptional  例外的<br>Exceptive  特殊的<br><strong>Ac</strong>(加强)cept  接受<br>Acception  承认<br><strong>Inter</strong>(在…中间)cept  拦截(在中间抓住)<br>Interception  截取<br>Incept  接受</p>
+<h1 id="ced-x2F-ceed-x2F-cess-x3D-go"><a href="#ced-x2F-ceed-x2F-cess-x3D-go" class="headerlink" title="ced&#x2F;ceed&#x2F;cess&#x3D;go"></a>ced&#x2F;ceed&#x2F;cess&#x3D;go</h1><p><strong>Pre</strong>(在前的)cede  先行，领先(始终保持在前方的状态)<br>Preced<strong>ent</strong>(表名词) 先例(在前面的东西)<br>Precedent<strong>ed</strong>  有先例的<br><strong>Un</strong>precedented  空前的(没有先例)<br>Exceed  超出<br>Excess  超过<br>Excessive  过分的<br><strong>Pro</strong>ceed  前进，进行<br>Proced<strong>ure</strong>  程序，过程<br>Process  过程<br>Procession 队伍<br>Antecedent  先行词<br>Antecessor  先驱者，祖宗<br><strong>Suc</strong>(后)cessor  继承者<br>Successive  连续的<br><strong>Re</strong>(向后)cede  后退<br>Retrocede  后退<br><strong>Inter</strong>cede  调解（在两者之间不让走，调停）<br>Intercession  说情</p>
 
               
             </div>
@@ -335,7 +323,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%80%92%E5%BD%92%E7%AE%97%E6%B3%95/">#递归算法</a>
+        <a href="/tags/%E8%8B%B1%E8%AF%AD/">#英语</a>
       
     </div>
   
@@ -347,8 +335,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>斐波那契递归详解</div>
-      <div>https://llc-zh.github.io/2022/04/29/斐波那契递归详解/</div>
+      <div>词根词缀(一)</div>
+      <div>https://llc-zh.github.io/2022/05/31/词根词缀-一/</div>
     </div>
     <div class="license-meta">
       
@@ -360,7 +348,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月29日</div>
+          <div>2022年5月31日</div>
         </div>
       
       
@@ -390,18 +378,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/31/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80-%E4%B8%80/" title="词根词缀(一)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">词根词缀(一)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/23/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%A4%8D%E4%B9%A0-%E9%98%9F%E5%88%97/" title="数据结构复习(队列)">
-                        <span class="hidden-mobile">数据结构复习(队列)</span>
+                      <a href="/2022/04/29/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%80%92%E5%BD%92%E8%AF%A6%E8%A7%A3/" title="斐波那契递归详解">
+                        <span class="hidden-mobile">斐波那契递归详解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
