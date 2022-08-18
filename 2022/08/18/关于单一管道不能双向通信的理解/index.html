@@ -16,22 +16,28 @@
   <meta name="author" content="野风掠原">
   <meta name="keywords" content="">
   
-    <meta name="description" content="初识词根词缀">
+    <meta name="description" content="Linux管道通信">
 <meta property="og:type" content="article">
-<meta property="og:title" content="词根词缀(一)">
-<meta property="og:url" content="https://llc-zh.github.io/2022/05/31/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80-%E4%B8%80/index.html">
+<meta property="og:title" content="关于单一管道不能双向通信的理解">
+<meta property="og:url" content="https://llc-zh.github.io/2022/08/18/%E5%85%B3%E4%BA%8E%E5%8D%95%E4%B8%80%E7%AE%A1%E9%81%93%E4%B8%8D%E8%83%BD%E5%8F%8C%E5%90%91%E9%80%9A%E4%BF%A1%E7%9A%84%E7%90%86%E8%A7%A3/index.html">
 <meta property="og:site_name" content="LLC BLOG">
-<meta property="og:description" content="初识词根词缀">
+<meta property="og:description" content="Linux管道通信">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-31T02:46:27.000Z">
-<meta property="article:modified_time" content="2022-05-31T03:58:51.787Z">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/kxpF6GCg2KHeXVW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/8kKRevLOsHNMj2Y.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/a1j56fQCOnYpZcW.png">
+<meta property="og:image" content="https://s2.loli.net/2022/08/18/ShXOIpLzHE9BKus.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200124005033900.png">
+<meta property="article:published_time" content="2022-08-18T14:29:39.000Z">
+<meta property="article:modified_time" content="2022-08-18T15:48:50.269Z">
 <meta property="article:author" content="野风掠原">
-<meta property="article:tag" content="英语">
+<meta property="article:tag" content="Linux进程通信">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2022/08/18/kxpF6GCg2KHeXVW.png">
   
   
   
-  <title>词根词缀(一) - LLC BLOG</title>
+  <title>关于单一管道不能双向通信的理解 - LLC BLOG</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +213,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">词根词缀(一)</span>
+            <span id="subtitle">关于单一管道不能双向通信的理解</span>
           
         </div>
 
@@ -218,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-31 10:46" pubdate>
-          2022年5月31日 上午
+        <time datetime="2022-08-18 22:29" pubdate>
+          2022年8月18日 晚上
         </time>
       </span>
     
@@ -230,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          941 字
+          2.4k 字
         
       </span>
     
@@ -241,7 +247,7 @@
         
         
         
-          8 分钟
+          20 分钟
         
       </span>
     
@@ -279,18 +285,29 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">词根词缀(一)</h1>
+            <h1 style="display: none">关于单一管道不能双向通信的理解</h1>
             
             <div class="markdown-body">
               
-              <h1 id="ag-x3D-do-act"><a href="#ag-x3D-do-act" class="headerlink" title="ag&#x3D;do,act"></a>ag&#x3D;do,act</h1><p>Ag<strong>ent</strong>(表人)  代理人<br>Agent<strong>ial</strong>(形容词)  代理人的<br>Ag<strong>ency</strong>(表性质)  机构<br>Agen<strong>da</strong>  议事日程</p>
-<h1 id="Agri-x3D-field-土地"><a href="#Agri-x3D-field-土地" class="headerlink" title="Agri&#x3D;field(土地)"></a>Agri&#x3D;field(土地)</h1><p><strong>agri</strong>culture  农业<br>agricultur<strong>al</strong>  农业的<br><strong>Agr</strong>onomy  农学的<br>Agronom<strong>ist</strong>  农学家<br>Agrarian 土地的</p>
-<h1 id="Ann-x3D-year"><a href="#Ann-x3D-year" class="headerlink" title="Ann&#x3D;year"></a>Ann&#x3D;year</h1><p>Annual  年度的<br>Anni<strong>vers</strong>(转)ary  周年纪念日(一年转一次)<br><strong>Per</strong>(全部，自始自终)ennial  全年的<br><strong>Semi</strong>(一半)annual  半年一次的</p>
-<h1 id="Audi-x3D-hear"><a href="#Audi-x3D-hear" class="headerlink" title="Audi&#x3D;hear"></a>Audi&#x3D;hear</h1><p>Audio  听觉的<br>Audi<strong>ence</strong>(表名词)  听众<br>Aud<strong>ible</strong>(能…的) 听得见的<br>Audit  旁听;审计(旁听公司流程)<br>Auditor  审计员<br>Audition  听觉<br>Audi-visual  试听法</p>
-<h1 id="Bell-x3D-war-bell响铃，吹响战争号角"><a href="#Bell-x3D-war-bell响铃，吹响战争号角" class="headerlink" title="Bell&#x3D;war(bell响铃，吹响战争号角)"></a>Bell&#x3D;war(bell响铃，吹响战争号角)</h1><p><strong>Re</strong>(回，向后)bel  反叛(回过来打自己人)<br>Rebell<strong>ion</strong>  叛乱<br>Belliger<strong>ent</strong>(关于…的)  好战的</p>
-<h1 id="Brev-x3D-short"><a href="#Brev-x3D-short" class="headerlink" title="Brev&#x3D;short"></a>Brev&#x3D;short</h1><p>Breif  简短的<br>Breviary  缩短，摘要<br>Brevity  简洁<br><strong>Ab</strong>(加强)breviate  缩短<br>Abbreviation  缩写</p>
-<h1 id="cept-x3D-take-拿"><a href="#cept-x3D-take-拿" class="headerlink" title="cept&#x3D;take(拿)"></a>cept&#x3D;take(拿)</h1><p><strong>Ex</strong>(出)cept  除…之外(拿出去)<br>Exceptional  例外的<br>Exceptive  特殊的<br><strong>Ac</strong>(加强)cept  接受<br>Acception  承认<br><strong>Inter</strong>(在…中间)cept  拦截(在中间抓住)<br>Interception  截取<br>Incept  接受</p>
-<h1 id="ced-x2F-ceed-x2F-cess-x3D-go"><a href="#ced-x2F-ceed-x2F-cess-x3D-go" class="headerlink" title="ced&#x2F;ceed&#x2F;cess&#x3D;go"></a>ced&#x2F;ceed&#x2F;cess&#x3D;go</h1><p><strong>Pre</strong>(在前的)cede  先行，领先(始终保持在前方的状态)<br>Preced<strong>ent</strong>(表名词) 先例(在前面的东西)<br>Precedent<strong>ed</strong>  有先例的<br><strong>Un</strong>precedented  空前的(没有先例)<br>Exceed  超出<br>Excess  超过<br>Excessive  过分的<br><strong>Pro</strong>ceed  前进，进行<br>Proced<strong>ure</strong>  程序，过程<br>Process  过程<br>Procession 队伍<br>Antecedent  先行词<br>Antecessor  先驱者，祖宗<br><strong>Suc</strong>(后)cessor  继承者<br>Successive  连续的<br><strong>Re</strong>(向后)cede  后退<br>Retrocede  后退<br><strong>Inter</strong>cede  调解（在两者之间不让走，调停）<br>Intercession  说情</p>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文关于Linux单一管道不能双向通信的理解基于<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39781096/article/details/104078742">这篇文章</a>，解读其中的代码同时附带部分理解。</p>
+<h2 id="第一部分：管道通信不会阻塞的例子"><a href="#第一部分：管道通信不会阻塞的例子" class="headerlink" title="第一部分：管道通信不会阻塞的例子"></a>第一部分：管道通信不会阻塞的例子</h2><p>我们先来看一看这段代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">pid_t</span> pid;<br>	<span class="hljs-keyword">int</span> fp[<span class="hljs-number">2</span>];<br>	<span class="hljs-keyword">int</span> ret=pipe(fp);<br>	<span class="hljs-keyword">int</span> i;<br>	<span class="hljs-keyword">char</span> *s[<span class="hljs-number">5</span>];<br>	<span class="hljs-keyword">char</span> *t[<span class="hljs-number">5</span>];<br>	s[<span class="hljs-number">0</span>]=<span class="hljs-string">&quot;ls&quot;</span>;<br>	s[<span class="hljs-number">1</span>]=<span class="hljs-string">&quot;-l&quot;</span>;<br>	s[<span class="hljs-number">2</span>]=<span class="hljs-literal">NULL</span>;<br>	t[<span class="hljs-number">0</span>]=<span class="hljs-string">&quot;wc&quot;</span>;<br>	t[<span class="hljs-number">1</span>]=<span class="hljs-literal">NULL</span>;<br>	<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)<br>	&#123;   <br>		pid=fork();<br>		<span class="hljs-keyword">if</span>(pid==<span class="hljs-number">-1</span>)<br>		&#123;   <br>			perror(<span class="hljs-string">&quot;pid error:&quot;</span>);<br>			<span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>		&#125;<br>		<span class="hljs-keyword">if</span>(pid == <span class="hljs-number">0</span>)&#123;<br>			<span class="hljs-keyword">break</span>;<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>)<br>	&#123;<br>		close(fp[<span class="hljs-number">0</span>]);<br>		dup2(fp[<span class="hljs-number">1</span>],STDOUT_FILENO);<br>		execvp(s[<span class="hljs-number">0</span>],s);<br>	&#125;<br>	<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i == <span class="hljs-number">1</span>)&#123;<br>		close(fp[<span class="hljs-number">1</span>]);<br>		dup2(fp[<span class="hljs-number">0</span>],STDIN_FILENO);<br>		execvp(t[<span class="hljs-number">0</span>],t);<br>	&#125;<br>	<span class="hljs-keyword">int</span> <span class="hljs-built_in">set</span>;<br>	<span class="hljs-keyword">if</span>(pid &gt; <span class="hljs-number">0</span>)&#123;<br>		<span class="hljs-keyword">do</span>&#123;<br>			<span class="hljs-built_in">set</span> = waitpid(<span class="hljs-number">-1</span>,<span class="hljs-literal">NULL</span>,WNOHANG);<br>		&#125;<span class="hljs-keyword">while</span>(<span class="hljs-built_in">set</span> == <span class="hljs-number">0</span>);<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>解读这段代码，可以知道它的作用是fork出两个子进程，其中一个子进程(称其为sub1)的管道读端关闭，而且sub1的标准输出从原先的指向tty(终端)变为指向管道写端，将输出的ls -l命令执行结果写入到管道缓冲区，另一个子进程(称其为sub2)的管道写端关闭，而且sub2的标准输入也从原先的指向tty(终端)变为指向管道读端，也就是说sub2的输入是从管道缓冲区读入的，执行wc命令统计上述ls -l执行结果的行数，单词数和字节数，将统计的结果输出到终端。  </p>
+<p>下面我画一幅图来详细描述这个过程。</p>
+<p><img src="https://s2.loli.net/2022/08/18/kxpF6GCg2KHeXVW.png" srcset="/img/loading.gif" lazyload alt="图一" title="fork初始状态"></p>
+<p>这是fork返回时三个进程的文件描述符状态，子进程会继承父进程的文件描述符。</p>
+<p><img src="https://s2.loli.net/2022/08/18/8kKRevLOsHNMj2Y.png" srcset="/img/loading.gif" lazyload alt="图二" title="sub1状态"></p>
+<p>正如前文所说，sub1子进程的标准输出会指向管道写入端，同时关闭管道读端，将ls -l命令执行的结果输出到管道写端，写入管道缓冲区。sub1终止，sub1的文件描述符关闭。</p>
+<p><img src="https://s2.loli.net/2022/08/18/a1j56fQCOnYpZcW.png" srcset="/img/loading.gif" lazyload alt="图三" title="sub2状态"></p>
+<p>注意此时父进程的do while循环打破了，因为waitpid返回了sub1的进程号，父进程这时也终止了，父进程的文件描述符自然就关闭了。子进程sub2读入ls -l的结果，作为wc的输入，因为此时写端没有文件描述符引用，所以sub2读操作不会阻塞。</p>
+<h2 id="第二部分：管道通信阻塞的例子"><a href="#第二部分：管道通信阻塞的例子" class="headerlink" title="第二部分：管道通信阻塞的例子"></a>第二部分：管道通信阻塞的例子</h2><p>我们再看这段修改过的代码</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/types.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;sys/wait.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;unistd.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;string.h&gt;</span></span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)<br>	&#123;<br>		<span class="hljs-keyword">pid_t</span> pid;<br>		<span class="hljs-keyword">int</span> fp[<span class="hljs-number">2</span>];<br>		<span class="hljs-keyword">int</span> ret=pipe(fp);<br>		<span class="hljs-keyword">int</span> i;<br>		<span class="hljs-keyword">char</span> *s[<span class="hljs-number">5</span>];<br>		<span class="hljs-keyword">char</span> *t[<span class="hljs-number">5</span>];<br>		s[<span class="hljs-number">0</span>]=<span class="hljs-string">&quot;ls&quot;</span>;<br>		s[<span class="hljs-number">1</span>]=<span class="hljs-string">&quot;-l&quot;</span>;<br>		s[<span class="hljs-number">2</span>]=<span class="hljs-literal">NULL</span>;<br>		t[<span class="hljs-number">0</span>]=<span class="hljs-string">&quot;wc&quot;</span>;<br>		t[<span class="hljs-number">1</span>]=<span class="hljs-literal">NULL</span>;<br>		<span class="hljs-keyword">for</span>(i=<span class="hljs-number">0</span>;i&lt;<span class="hljs-number">2</span>;i++)<br>		&#123;   <br>			pid=fork();<br>			<span class="hljs-keyword">if</span>(pid==<span class="hljs-number">-1</span>)<br>			&#123;   <br>				perror(<span class="hljs-string">&quot;pid error:&quot;</span>);<br>				<span class="hljs-built_in">exit</span>(<span class="hljs-number">1</span>);<br>			&#125;<br>			<span class="hljs-keyword">if</span>(pid == <span class="hljs-number">0</span>)&#123;<br>				<span class="hljs-keyword">break</span>;<br>			&#125;<br>		&#125;<br>		<span class="hljs-keyword">if</span>(i == <span class="hljs-number">0</span>)<br>		&#123;<br>			close(fp[<span class="hljs-number">0</span>]);<br>			dup2(fp[<span class="hljs-number">1</span>],STDOUT_FILENO);<br>			execvp(s[<span class="hljs-number">0</span>],s);<br>		&#125;<br>		<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(i == <span class="hljs-number">1</span>)&#123;<br>			close(fp[<span class="hljs-number">1</span>]);<br>			dup2(fp[<span class="hljs-number">0</span>],STDIN_FILENO);<br>			execvp(t[<span class="hljs-number">0</span>],t);<br>		&#125;<br>		<span class="hljs-keyword">int</span> <span class="hljs-built_in">set</span>;<br>		<span class="hljs-keyword">if</span>(pid &gt; <span class="hljs-number">0</span>)&#123;<br>			<span class="hljs-keyword">do</span>&#123;<br>				<span class="hljs-built_in">set</span> = waitpid(<span class="hljs-number">-1</span>,<span class="hljs-literal">NULL</span>,WNOHANG);<br>			&#125;<span class="hljs-keyword">while</span>(<span class="hljs-built_in">set</span> == <span class="hljs-number">0</span>);<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p>这段修改过的代码添加了一个while死循环，这意味着父进程不会终止，而且还会不断的fork子进程，非常的恐怖。如果运行了这段代码，可以使用kill命令终止父进程。</p>
+<p>那么这段代码为什么会阻塞进程？请看下图</p>
+<p><img src="https://s2.loli.net/2022/08/18/ShXOIpLzHE9BKus.png" srcset="/img/loading.gif" lazyload alt="图四" title="进程阻塞"></p>
+<p>管道写端引用&gt;0, Read读完管道缓冲区后，如果缓冲区内没有数据写入，会阻塞等待写入。当然类似sub2的wc子进程有很多，不止图中的一个。所以会造成如下情况。</p>
+<p><img src="https://img-blog.csdnimg.cn/20200124005033900.png" srcset="/img/loading.gif" lazyload alt="图五" title="进程阻塞"></p>
 
               
             </div>
@@ -308,7 +325,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="category-chain-item">学习</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
@@ -323,7 +340,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%8B%B1%E8%AF%AD/">#英语</a>
+        <a href="/tags/Linux%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1/">#Linux进程通信</a>
       
     </div>
   
@@ -335,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>词根词缀(一)</div>
-      <div>https://llc-zh.github.io/2022/05/31/词根词缀-一/</div>
+      <div>关于单一管道不能双向通信的理解</div>
+      <div>https://llc-zh.github.io/2022/08/18/关于单一管道不能双向通信的理解/</div>
     </div>
     <div class="license-meta">
       
@@ -348,7 +365,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月31日</div>
+          <div>2022年8月18日</div>
         </div>
       
       
@@ -378,18 +395,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/05/31/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80-%E4%BA%8C/" title="词根词缀(二)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">词根词缀(二)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/29/%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E9%80%92%E5%BD%92%E8%AF%A6%E8%A7%A3/" title="斐波那契递归详解">
-                        <span class="hidden-mobile">斐波那契递归详解</span>
+                      <a href="/2022/05/31/%E8%AF%8D%E6%A0%B9%E8%AF%8D%E7%BC%80-%E4%BA%8C/" title="词根词缀(二)">
+                        <span class="hidden-mobile">词根词缀(二)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
